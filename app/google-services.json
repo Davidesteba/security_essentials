@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "495783161471",
+    "firebase_url": "https://security-essentials-e58ca.firebaseio.com",
+    "project_id": "security-essentials-e58ca",
+    "storage_bucket": "security-essentials-e58ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495783161471:android:947200eb4c51657c0c994a",
+        "android_client_info": {
+          "package_name": "com.example.security_essentials"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495783161471-1ecf7u9sqg6oa2pr57hueb8auqg40d33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.security_essentials",
+            "certificate_hash": "633260bdc90102d5081ab5324657ddc31891bc6c"
+          }
+        },
+        {
+          "client_id": "495783161471-qeqleo1ldhclknbmochfa44o96tr0dl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMa6b9KQKH0vUCzTHPaa0WnsdPDMM1IwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495783161471-qeqleo1ldhclknbmochfa44o96tr0dl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
