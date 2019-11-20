@@ -10,8 +10,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Register"
+        android:layout_marginTop="24dp"
+        android:text="Registrar"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,19 +20,18 @@
 
     <EditText
         android:id="@+id/editTextEmail"
-        android:layout_width="0dp"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Correo Electronico"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextPass"
-        android:layout_width="0dp"
+        android:id="@+id/editTextPassword"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -43,8 +42,8 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <EditText
-        android:id="@+id/editTextRepPass"
-        android:layout_width="0dp"
+        android:id="@+id/editTextRepPassword"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -52,26 +51,26 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Register"
+        android:layout_marginTop="8dp"
+        android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRepPass" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRepPassword" />
 
-    <TextView
-        android:id="@+id/textViewRegresar"
+    <Button
+        android:id="@+id/buttonRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Regresar"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegistrar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
