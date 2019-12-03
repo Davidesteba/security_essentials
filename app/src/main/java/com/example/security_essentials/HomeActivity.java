@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -20,7 +22,7 @@ import com.google.android.gms.location.LocationServices;
 public class HomeActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
     private Location mLastLocation;
-    private TextView textViewLatitud, textViewLongitud;
+    private TextView textViewLatitud, textViewLongitud, textViewCorreo;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -29,11 +31,16 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
         setContentView(R.layout.activity_home);
         textViewLatitud = findViewById(R.id.textViewLatitud);
         textViewLongitud = findViewById(R.id.textViewLongitud);
+        textViewCorreo = findViewById(R.id.textViewCorreoRegistrado);
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+        SharedPreferences preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        String correo = preferences.getString("correo", "");
+        String contra = preferences.getString("pass", "");
+        textViewCorreo.setText(correo);
     }
 
     @Override
