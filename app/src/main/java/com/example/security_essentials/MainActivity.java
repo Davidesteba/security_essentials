@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                                         SharedPreferences preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = preferences.edit();
                                         editor.putString("correo", editTextEmail.getText().toString());
-                                        editor.putString("contra", editTextPass.getText().toString());
+                                        editor.putString("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                         editor.commit();
                                     } else {
                                         Toast.makeText(MainActivity.this, "Authentication failed.",

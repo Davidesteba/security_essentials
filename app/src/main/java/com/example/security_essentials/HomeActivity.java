@@ -22,7 +22,7 @@ import com.google.android.gms.location.LocationServices;
 public class HomeActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
     private Location mLastLocation;
-    private TextView textViewLatitud, textViewLongitud, textViewCorreo;
+    private TextView textViewLatitud, textViewLongitud, textViewCorreo, textViewNombre;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
         textViewLatitud = findViewById(R.id.textViewLatitud);
         textViewLongitud = findViewById(R.id.textViewLongitud);
         textViewCorreo = findViewById(R.id.textViewCorreoRegistrado);
+        textViewNombre = findViewById(R.id.textViewUid);
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -39,8 +40,10 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                 .build();
         SharedPreferences preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         String correo = preferences.getString("correo", "");
-        String contra = preferences.getString("pass", "");
+        String uid = preferences.getString("uid", "");
         textViewCorreo.setText(correo);
+        textViewNombre.setText(uid);
+
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.example.security_essentials;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +13,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -34,6 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editTextEmailR, editTextPasswordR, editTextRepPassword;
     private Button buttonRegistrar, buttonRegresar;
 
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 
     @Override
@@ -46,6 +52,9 @@ public class RegisterActivity extends AppCompatActivity {
         editTextRepPassword = (EditText) findViewById(R.id.editTextRepPassword);
         buttonRegistrar = (Button) findViewById(R.id.buttonRegistrar);
         buttonRegresar = (Button) findViewById(R.id.buttonRegresar);
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
         buttonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +74,13 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
+                                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                            User user = new User();
+                                            user.setUid(uid);
+                                            user.setCorreo(editTextEmailR.getText().toString());
+                                            databaseReference.child("Users").child(user.getUid()).setValue(user);
+                                            DBHelper dbHelper = new DBHelper(RegisterActivity.this);
+                                            dbHelper.insertData(editTextEmailR.getText().toString(), uid, RegisterActivity.this);
                                             Toast.makeText(RegisterActivity.this, "Usuario creado con exito", Toast.LENGTH_SHORT).show();
                                             Intent cambio = new Intent(RegisterActivity.this, MainActivity.class);
                                             startActivity(cambio);
@@ -87,6 +103,13 @@ public class RegisterActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+            }
+        });
+        buttonRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
